@@ -1,6 +1,6 @@
 package boardgame;
 
-public class Piece {
+public abstract class Piece {
 
 	/**
 	 * This type of position is not yet the position of chess, it is a simple
@@ -25,5 +25,43 @@ public class Piece {
 	protected Board getBoard() {
 		return board;
 	}
+	
+	public abstract boolean[][] possibleMoves();
+	
+	/**
+	 * Checks if a piece can move to a certain position,
+	 * returning true or false.
+	 * 
+	 * @param position
+	 * @return
+	 */
+	
+	public boolean possibleMove(Position position) {
+		
+		/**
+		 * Hook methods, is a method that makes a hook with the sub-class.
+		 */
+		
+		return possibleMoves() [position.getRow()][position.getColumn()];
+	}
 
+	
+	/**
+	 * Checks if exists a possible move to the piece.
+	 * 
+	 * @return
+	 */
+	
+	public boolean isThereAnyPossibleMove() {
+		boolean[][] mat = possibleMoves();
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = 0; j < mat.length; j++) {
+				if (mat[i][j]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }
