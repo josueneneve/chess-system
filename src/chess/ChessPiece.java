@@ -18,7 +18,17 @@ public abstract class ChessPiece extends Piece {
 	}
 	
 	/**
-	 * check if there is a piece in that position.
+	 * Get a position and transforms into a ChessPosition.
+	 * 
+	 * @return
+	 */
+	
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
+	}
+	
+	/**
+	 * Check if there is a piece in that position.
 	 * 
 	 * @param position
 	 * @return
