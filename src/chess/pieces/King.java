@@ -35,6 +35,10 @@ public class King extends ChessPiece {
 		return p == null || p.getColor() != getColor();
 	}
 
+	/**
+	 * Possible movements the piece.
+	 */
+	
 	@Override
 	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getRows()];
