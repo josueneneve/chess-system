@@ -140,7 +140,14 @@ public class ChessMatch {
 		 * Remove the piece from the source position.
 		 */
 		
-		Piece p = board.removePiece(source);
+		ChessPiece p = (ChessPiece)board.removePiece(source);
+		
+		/**
+		 * increases the movement of a part.
+		 */
+		
+		p.increaseMoveCount();
+		
 		
 		/**
 		 * Remove a possible piece at the target position.
@@ -171,7 +178,15 @@ public class ChessMatch {
 	 */
 	
 	private void undoMove(Position source, Position target, Piece capturedPiece) {
-		Piece p = board.removePiece(target);
+		ChessPiece p = (ChessPiece)board.removePiece(target);
+		
+		/**
+		 * decrements the movement of a part.
+		 */
+		
+		p.decreaseMoveCount();
+		
+		
 		board.placePiece(p, source);
 		
 		if (capturedPiece != null) {
